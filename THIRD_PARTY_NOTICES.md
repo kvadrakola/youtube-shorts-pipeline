@@ -10,4 +10,4 @@ Runtime libraries are declared in `pipeline/requirements.txt` and are subject to
 
 ## Outro HTML template
 
-The default card under `poster/stitch_spiritual_video_outro_card_template/` uses Tailwind CSS and Google Fonts via CDN at render time. Network access is required when Playwright loads the template unless you self-host those assets.
+The default card under `poster/outro_card_template/` uses Tailwind CSS and Google Fonts via CDN at render time. Network access is required when Playwright loads the template unless you self-host those assets.

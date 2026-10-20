@@ -33,7 +33,7 @@ def slugify_title(title: str, max_words: int = 6) -> str:
         if token:
             tokens.append(token)
     if not tokens:
-        return "lecture_short"
+        return "clip_short"
     return "_".join(tokens[:max_words])
 
 _PROMPT_PREAMBLE = """You are a YouTube Shorts editor for long-form spoken video (lectures, talks, podcasts, interviews).
@@ -80,13 +80,13 @@ Return JSON only, matching this schema:
         "yt_description_summary": "Exactly 2 concise sentences rich in SEO keywords summarizing the clip.",
         "yt_tags": ["tag1", "tag2", "... 8-12 relevant SEO tags total"],
         "yt_hashtags": ["#Shorts", "#tag2", "#tag3", "#tag4", "4-5 hashtags total, first must be #Shorts"],
-        "yt_pinned_comment": "Engaging pinned comment draft: invite discussion, mention watching the full lecture, and __BRAND_WEBSITE__ when appropriate."
+        "yt_pinned_comment": "Engaging pinned comment draft: invite discussion, mention watching the full long-form video, and __BRAND_WEBSITE__ when appropriate."
       }
     }
   ]
 }
 
-Use segment timestamps as bounds. Prefer the main lecturer's voice when multiple speakers appear."""
+Use segment timestamps as bounds. Prefer the main speaker's voice when multiple speakers appear."""
 
 
 def _prompt_criteria_and_schema() -> str:
@@ -113,7 +113,7 @@ _STRATEGY_1_SUFFIX = """
 
 Strategy: balanced category mix. Choose clips with this distribution:
 
-- Category A (Humor & Playful Wit, 1–2 clips): Moments where the lecturer jokes, uses playful analogies, ironizes, or makes the audience laugh.
+- Category A (Humor & Playful Wit, 1–2 clips): Moments where the speaker jokes, uses playful analogies, ironizes, or makes the audience laugh.
 - Category B (Paradox & Mind-Bending Hooks, 2 clips): Provocative statements, counter-intuitive claims, or strong intellectual hooks.
 - Category C (Core ideas & teaching, 2–3 clips): Foundational explanations, memorable quotes, and high-value teaching moments.
 
@@ -133,7 +133,7 @@ Strategy: retention science and viral hooks. Prioritize clips engineered for scr
 
 _STRATEGY_3_SUFFIX = """
 
-Strategy: myth-busting and constructive controversy. Prioritize clips where the lecturer:
+Strategy: myth-busting and constructive controversy. Prioritize clips where the speaker:
 
 - Refutes common misconceptions, popular myths, or lazy assumptions about the topic.
 - Engages in sharp but respectful debate: pushback, counter-arguments, and clear rebuttals.
@@ -600,7 +600,7 @@ def select_clips_from_transcript(
         raise RuntimeError(
             f"DeepSeek produced only {len(selected)} unique non-overlapping clips; "
             f"at least {MIN_FALLBACK_CLIP_COUNT} are required. "
-            "The lecture may be too short or the candidate "
+            "The source video may be too short or the candidate "
             "pool may need regeneration."
         )
     if len(selected) < clip_limit:

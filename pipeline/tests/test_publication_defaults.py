@@ -12,7 +12,7 @@ _REPO_ROOT = PROJECT_ROOT.parent
 _OUTRO_HTML = (
     _REPO_ROOT
     / "poster"
-    / "stitch_spiritual_video_outro_card_template"
+    / "outro_card_template"
     / "code.html"
 )
 _BANNED_TEXT_PATTERNS = (

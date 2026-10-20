@@ -124,7 +124,7 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "youtube_url",
         nargs="?",
         default=DEFAULT_URL,
-        help=f"YouTube lecture URL (default: {DEFAULT_URL})",
+        help=f"YouTube video URL (default: {DEFAULT_URL})",
     )
     parser.add_argument("--language", default=None, help="Force a Whisper language code, for example en")
     parser.add_argument("--batch-size", type=int, default=None, help="Whisper batch size, 1-32")

@@ -40,7 +40,7 @@ def get_outro_language_copy() -> dict[str, dict[str, str]]:
     secondary_en = settings.BRAND_OUTRO_SECONDARY_CTA_EN.strip() or "Link in description"
     return {
         "en": {
-            "lecture_cta": f"Full lecture & subscribe at {host}",
+            "lecture_cta": f"Full video & subscribe at {host}",
             "secondary_cta": secondary_en,
             "scholar_badge": badge,
             "headline": headline_en,
@@ -50,10 +50,10 @@ def get_outro_language_copy() -> dict[str, dict[str, str]]:
             "footer_line": footer,
         },
         "es": {
-            "lecture_cta": f"Conferencia completa y suscripción en {host}",
+            "lecture_cta": f"Video completo y suscripción en {host}",
             "secondary_cta": "Enlace en la descripción",
             "scholar_badge": badge,
-            "headline": "Descubre más de\ntus conferencias",
+            "headline": "Descubre más en\ntu canal",
             "tagline": (
                 "Convierte charlas largas en Shorts con subtítulos, outro y metadatos listos."
             ),
@@ -62,10 +62,10 @@ def get_outro_language_copy() -> dict[str, dict[str, str]]:
             "footer_line": footer,
         },
         "ru": {
-            "lecture_cta": f"Полная лекция и подписка на {host}",
+            "lecture_cta": f"Полное видео и подписка на {host}",
             "secondary_cta": "Ссылка в описании",
             "scholar_badge": badge,
-            "headline": "Больше материала\nиз ваших лекций",
+            "headline": "Больше на\nвашем канале",
             "tagline": (
                 "Длинные выступления в Shorts: субтитры, аутро и метаданные для загрузки."
             ),

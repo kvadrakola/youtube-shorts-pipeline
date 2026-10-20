@@ -1,6 +1,8 @@
-# Lecture-to-Shorts pipeline
+# Long-form video-to-Shorts pipeline
 
-Python pipeline that turns long-form YouTube (or local) lecture video into captioned 9:16 Shorts with optional branded outros and multilingual YouTube metadata.
+Python pipeline for **AI-powered video repurposing**: turn long-form YouTube (or local) video into captioned 9:16 Shorts with optional branded outros and multilingual YouTube metadata. Clip selection is **AI-assisted**; transcription and render steps are automated once you configure APIs and branding.
+
+Works best on **spoken** long-form content (talks, podcasts, interviews, explainers, lectures, and similar). Tune niche vocabulary and tone with `CLIP_SELECTOR_CONTEXT`, `WHISPER_INITIAL_PROMPT`, and translation settings in `.env`.
 
 ## What it does
 
@@ -27,7 +29,7 @@ Full ingest (CUDA, Whisper large-v3, Pyannote, Playwright outro render) is **not
 ## Supported inputs (as designed)
 
 - Public YouTube URLs via yt-dlp (cookies optional for rate limits)  
-- Long-form spoken content; main speaker bias in clip selection  
+- Long-form spoken content; main-speaker bias in clip selection  
 - Output languages: `en`, `es`, `ru` for metadata/outro copy  
 
 ## Not guaranteed
@@ -58,10 +60,11 @@ python run_ingestion_pipeline.py "https://www.youtube.com/watch?v=VIDEO_ID"
 | `BRAND_NAME` | Channel name in SEO and tags |
 | `BRAND_WEBSITE_URL` | Link in descriptions and outro |
 | `BRAND_SOCIAL_HANDLE` | Outro social strip |
-| `BRAND_OUTRO_*` | Outro headline, tagline, scholar badge text |
+| `BRAND_OUTRO_*` | Outro headline, tagline, presenter/channel badge (`BRAND_OUTRO_SCHOLAR_BADGE`) |
 | `BRAND_OUTRO_CUSTOM_MP4` | Your own outro MP4 (skips HTML render) |
 | `BRAND_OUTRO_CUSTOM_DIR` | Per-language `outro_<lang>.mp4` files |
 | `OUTRO_HTML_PATH` | Custom HTML outro template (Playwright) |
+| `CLIP_SELECTOR_CONTEXT` | Optional extra paragraph for clip-selection prompts (niche, tone, terminology) |
 
 Defaults use `example.com` and `Example Channel`.
 

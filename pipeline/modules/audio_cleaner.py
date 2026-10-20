@@ -1,4 +1,4 @@
-"""DeepFilterNet3 denoising for lecture audio."""
+"""DeepFilterNet3 denoising for source speech audio."""
 
 from __future__ import annotations
 

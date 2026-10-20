@@ -1,4 +1,4 @@
-"""Select self-contained lecture windows and render 9:16 captioned Shorts."""
+"""Select self-contained clip windows and render 9:16 captioned Shorts."""
 
 from __future__ import annotations
 
@@ -73,7 +73,7 @@ DESCRIPTION_COPY: dict[str, dict[str, str]] = {
         "description": "[DESCRIPTION]",
         "pinned_comment": "[PINNED COMMENT]",
         "tags": "[TAGS]",
-        "watch_full": "🎬 Watch full lecture:",
+        "watch_full": "🎬 Watch full video:",
         "website": "🌐 Website:",
     },
     "es": {
@@ -81,7 +81,7 @@ DESCRIPTION_COPY: dict[str, dict[str, str]] = {
         "description": "[DESCRIPCIÓN]",
         "pinned_comment": "[COMENTARIO FIJADO]",
         "tags": "[ETIQUETAS]",
-        "watch_full": "🎬 Mira la conferencia completa:",
+        "watch_full": "🎬 Mira el video completo:",
         "website": "🌐 Sitio web:",
     },
     "ru": {
@@ -89,7 +89,7 @@ DESCRIPTION_COPY: dict[str, dict[str, str]] = {
         "description": "[ОПИСАНИЕ]",
         "pinned_comment": "[ЗАКРЕПЛЁННЫЙ КОММЕНТАРИЙ]",
         "tags": "[ТЕГИ]",
-        "watch_full": "🎬 Полная лекция:",
+        "watch_full": "🎬 Полное видео:",
         "website": "🌐 Сайт:",
     },
 }
@@ -240,7 +240,7 @@ def _overlaps(left: dict[str, Any], right: dict[str, Any]) -> bool:
 
 def _title_from_hook(hook: str) -> str:
     words = hook.replace("?", "").replace(".", "").split()
-    return " ".join(words[:8]).strip() or "Lecture short"
+    return " ".join(words[:8]).strip() or "Short clip"
 
 
 def _escape_ass_path(path: Path) -> str:
@@ -552,20 +552,20 @@ def _fallback_youtube_seo(clip: SelectedClip, story: dict[str, Any]) -> YoutubeS
     hook = str(story.get("hook") or clip.hook or title).strip()
     summary = hook if hook.endswith(".") else f"{hook}."
     return YoutubeSeo(
-        yt_title=title or "Lecture short",
+        yt_title=title or "Short clip",
         yt_description_summary=(
-            f"{summary} Watch this clip from a {brand} lecture. "
-            "See the full video for more context."
+            f"{summary} Watch this clip from {brand}. "
+            "See the full long-form video for more context."
         ),
         yt_tags=[
             "shorts",
-            "lecture",
+            "video",
             "education",
             brand.lower(),
-            "philosophy",
+            "clip",
             "talk",
         ],
-        yt_hashtags=["#Shorts", "#Lecture", "#Education"],
+        yt_hashtags=["#Shorts", "#Video", "#Education"],
         yt_pinned_comment=(
             "What stood out to you in this clip? Share below — "
             f"and explore more at {website}"

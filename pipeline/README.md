@@ -1,6 +1,6 @@
-# Pipeline: ingestion, transcription, clip selection, Shorts render
+# Pipeline: ingestion, transcription, AI-assisted clip selection, Shorts render
 
-Local pipeline for long-form lecture video on an NVIDIA GPU (24 GB VRAM tested during development). It downloads a YouTube video, isolates 16 kHz mono audio, denoises with DeepFilterNet3, transcribes with WhisperX, force-aligns words, labels speakers with Pyannote 3.1, selects clips with an LLM, and renders 9:16 Shorts.
+Local **short-form content automation** pipeline for long-form video on an NVIDIA GPU (24 GB VRAM tested during development). It downloads a YouTube video (or uses your local source), isolates 16 kHz mono audio, denoises with DeepFilterNet3, transcribes with WhisperX, force-aligns words, labels speakers with Pyannote 3.1, selects clips with an LLM, and renders 9:16 Shorts.
 
 ## Setup
 
@@ -68,7 +68,7 @@ Shorts open on the selected hook. Captions use bundled Montserrat ExtraBold (or 
 
 ### Default neutral outro
 
-If you do not configure a custom asset, the pipeline renders the bundled HTML card at `../poster/stitch_spiritual_video_outro_card_template/code.html` (`OUTRO_HTML_PATH`) with your `BRAND_*` text injected at capture time.
+If you do not configure a custom asset, the pipeline renders the bundled HTML card at `../poster/outro_card_template/code.html` (`OUTRO_HTML_PATH`) with your `BRAND_*` text injected at capture time.
 
 ### Custom outro for your channel
 
@@ -82,13 +82,15 @@ Supported options (only these are implemented):
 
 Priority: `BRAND_OUTRO_CUSTOM_MP4` → `BRAND_OUTRO_CUSTOM_DIR/outro_<lang>.mp4` → HTML render to `assets/outro_rendered_<lang>.mp4`.
 
-Custom HTML templates should keep the element ids used by `modules/outro.py`: `outro-lecture-cta`, `outro-secondary-cta` (legacy alias `outro-patreon-cta`), `outro-scholar-badge`, `outro-headline`, `outro-tagline`, `outro-brand-website`, `outro-brand-handle`, `outro-footer-copyright`.
+Custom HTML templates should keep the element ids used by `modules/outro.py`: `outro-lecture-cta` (primary “watch full video” CTA), `outro-secondary-cta` (legacy alias `outro-patreon-cta`), `outro-scholar-badge` (presenter/channel badge), `outro-headline`, `outro-tagline`, `outro-brand-website`, `outro-brand-handle`, `outro-footer-copyright`.
 
 Place optional assets under `pipeline/assets/outro/custom/` (see `.env.example`).
 
 On HTML render, `modules/outro.py` muxes optional bed music. Set `OUTRO_MUSIC_URL` to download a track with yt-dlp, or place your own licensed file at `OUTRO_MUSIC_PATH`. With neither configured, a silent track is generated. Playwright needs `python -m playwright install chromium`.
 
-Set `BRAND_OUTRO_TRANSITION_SECONDS` between 0.5 and 2.5 to tune the crossfade from lecture footage to outro.
+Set `BRAND_OUTRO_TRANSITION_SECONDS` between 0.5 and 2.5 to tune the crossfade from main footage to outro.
+
+Optional `CLIP_SELECTOR_CONTEXT` in `.env` appends channel-specific instructions to the clip-selection system prompt (content domain, terminology, tone).
 
 ```powershell
 python -c "from modules.outro import ensure_outro_video; print(ensure_outro_video())"

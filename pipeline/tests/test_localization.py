@@ -18,8 +18,8 @@ def _seo() -> YoutubeSeo:
     return YoutubeSeo(
         yt_title="Already Fallen? You Can't Fall Further!",
         yt_description_summary="Discover the core idea from this talk.",
-        yt_tags=["education", "lecture", "Example Channel"],
-        yt_hashtags=["#Shorts", "#Education", "#Lecture"],
+        yt_tags=["education", "video", "Example Channel"],
+        yt_hashtags=["#Shorts", "#Education", "#Video"],
         yt_pinned_comment="What stood out to you? Visit example.com",
     )
 

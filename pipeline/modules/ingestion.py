@@ -201,7 +201,7 @@ def download_lecture_audio(
     video_output_dir: str | Path | None = None,
     write_shorts_info: bool = True,
 ) -> str:
-    """Download a lecture and return the absolute path of the 16 kHz mono wav.
+    """Download source video audio and return the absolute path of the 16 kHz mono wav.
 
     The matching source video is stored in ``video_output_dir`` as
     ``{id}_source.mp4``. Optional output directories let standalone tools reuse

@@ -6,10 +6,10 @@
   "full_video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=12s",
   "website_url": "https://example.com",
   "youtube_seo": {
-    "yt_title": "One idea from a long lecture",
+    "yt_title": "One idea from a long-form video",
     "yt_description_summary": "Sample metadata for documentation only.",
-    "yt_tags": ["shorts", "lecture", "education"],
-    "yt_hashtags": ["#Shorts", "#Lecture"],
+    "yt_tags": ["shorts", "video", "education"],
+    "yt_hashtags": ["#Shorts", "#Video"],
     "yt_pinned_comment": "Sample pinned comment — visit example.com"
   }
 }

@@ -34,9 +34,9 @@ class OutroLocalizationTests(unittest.TestCase):
         self.assertEqual(
             ctas,
             {
-                "en": (f"Full lecture & subscribe at {host}", "Link in description"),
-                "es": (f"Conferencia completa y suscripción en {host}", "Enlace en la descripción"),
-                "ru": (f"Полная лекция и подписка на {host}", "Ссылка в описании"),
+                "en": (f"Full video & subscribe at {host}", "Link in description"),
+                "es": (f"Video completo y suscripción en {host}", "Enlace en la descripción"),
+                "ru": (f"Полное видео и подписка на {host}", "Ссылка в описании"),
             },
         )
 

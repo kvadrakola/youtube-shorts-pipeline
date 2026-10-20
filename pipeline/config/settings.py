@@ -122,7 +122,7 @@ class Settings(BaseSettings):
     BRAND_WEBSITE_URL: str = "https://example.com"
     BRAND_SOCIAL_HANDLE: str = "@ExampleChannel"
     BRAND_OUTRO_SCHOLAR_BADGE: str = "Example Channel"
-    BRAND_OUTRO_HEADLINE_EN: str = "Discover more from\nyour lectures"
+    BRAND_OUTRO_HEADLINE_EN: str = "Discover more from\nyour channel"
     BRAND_OUTRO_TAGLINE_EN: str = (
         "Turn long-form talks into Shorts with captions, outros, and upload-ready metadata."
     )
@@ -141,7 +141,7 @@ class Settings(BaseSettings):
     BRAND_OUTRO_CUSTOM_MP4: Path | None = None
     BRAND_OUTRO_CUSTOM_DIR: Path = PROJECT_ROOT / "assets" / "outro" / "custom"
     OUTRO_HTML_PATH: Path = (
-        PROJECT_ROOT.parent / "poster" / "stitch_spiritual_video_outro_card_template" / "code.html"
+        PROJECT_ROOT.parent / "poster" / "outro_card_template" / "code.html"
     )
     OUTRO_MUSIC_URL: str = ""
     OUTRO_MUSIC_PATH: Path = PROJECT_ROOT / "assets" / "audio" / "outro_music.mp3"
