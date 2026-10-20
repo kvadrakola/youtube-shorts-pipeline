@@ -1,0 +1,435 @@
+<!DOCTYPE html><html lang="en" style=""><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Neutral YouTube Shorts Outro Card (1080x1920)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+    body {
+      background-color: #03040b;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      padding: 24px;
+    }
+
+    /* Outro card container in 9:16 aspect ratio (1080 x 1920 px scaled) */
+    .shorts-canvas {
+      position: relative;
+      width: 480px;
+      height: 853px; /* 9:16 vertical ratio */
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(212, 175, 55, 0.28);
+      background: radial-gradient(circle at 50% 28%, #151838 0%, #0d1025 45%, #050612 80%, #030409 100%);
+    }
+
+    .font-cinzel {
+      font-family: 'Cinzel', serif;
+    }
+
+    /* Shimmering Gold Text Gradient */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #fff3cf 0%, #ecd38c 30%, #c59f48 65%, #ffd778 85%, #fff6db 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: goldShine 7s ease-in-out infinite alternate;
+    }
+
+    @keyframes goldShine {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    /* Continuous, smooth, perfectly centered spinning flower (NO wobble, NO orbit rings) */
+    @keyframes flower-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .spin-flower {
+      animation: flower-spin 22s linear infinite;
+      transform-origin: center center;
+    }
+
+    /* Brand wordmark gold tone filter matching headline */
+    .brand-wordmark-gold {
+      filter: invert(85%) sepia(45%) saturate(800%) hue-rotate(5deg) brightness(105%) contrast(95%) drop-shadow(0 2px 10px rgba(212, 175, 55, 0.4));
+    }
+
+    /* Smooth, perfectly centered slow rotation with zero wobble or off-center drift */
+    @keyframes mandala-spin-centered {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .spin-mandala-centered {
+      animation: mandala-spin-centered 100s linear infinite;
+      transform-origin: 50% 50%;
+    }
+
+    /* Lecturer gentle floating animation */
+    @keyframes lecturerFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    .float-lecturer {
+      animation: lecturerFloat 5.5s ease-in-out infinite;
+    }
+
+    /* Live broadcast recording pulse dot */
+    @keyframes recDotPulse {
+      0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+      50% { transform: scale(1.2); opacity: 0.8; box-shadow: 0 0 0 5px rgba(239, 68, 68, 0); }
+    }
+    .rec-pulse {
+      animation: recDotPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Golden rim glow around portrait */
+    .portrait-glow {
+      filter: drop-shadow(0 0 24px rgba(212, 175, 55, 0.35)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
+    }
+
+    /* Twinkling and drifting stardust particles */
+    @keyframes starTwinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.85); }
+      50% { opacity: 0.95; transform: scale(1.3); }
+    }
+    .star {
+      position: absolute;
+      background: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #fff, 0 0 12px rgba(212, 175, 55, 0.6);
+      animation: starTwinkle var(--twinkle-dur, 3s) ease-in-out infinite alternate;
+    }
+
+    @keyframes dustFloat {
+      0% { transform: translateY(0px) translateX(0px); opacity: 0.15; }
+      50% { transform: translateY(-20px) translateX(6px); opacity: 0.8; }
+      100% { transform: translateY(-40px) translateX(-4px); opacity: 0.1; }
+    }
+    .stardust {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: #fed7aa;
+      box-shadow: 0 0 5px #fbbf24;
+      animation: dustFloat var(--float-dur, 6s) ease-in-out infinite;
+    }
+
+    /* Logo, portrait, and headline stack — ~120px top inset on 1080×1920 export */
+    .outro-content-stack {
+      padding-top: calc(120 * 853 / 1920 * 1px);
+    }
+
+    .outro-title {
+      max-width: 80%;
+      margin: 0 auto;
+      padding: 0 40px;
+      text-align: center;
+      font-size: 1.125rem;
+      line-height: 1.38;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+<!-- 9:16 Vertical Outro Canvas (1080x1920 logical aspect ratio) -->
+<main class="shorts-canvas flex flex-col items-center justify-between text-white relative">
+<!-- Layer 0: Ambient Celestial Stars, Stardust & Cosmic Nebula -->
+<div class="absolute inset-0 pointer-events-none z-0">
+<div class="absolute top-[8%] left-1/2 -translate-x-1/2 w-80 h-80 bg-amber-500/10 rounded-full blur-[85px]"></div>
+<div class="absolute top-[38%] right-[-10%] w-72 h-72 bg-indigo-500/15 rounded-full blur-[90px]"></div>
+<div class="absolute bottom-[24%] left-[-10%] w-80 h-80 bg-purple-900/15 rounded-full blur-[100px]"></div>
+<!-- Twinkling stars -->
+<div class="star w-1.5 h-1.5 top-[6%] left-[16%]" style="--twinkle-dur: 2.7s;"></div>
+<div class="star w-1 h-1 top-[13%] right-[20%]" style="--twinkle-dur: 3.5s;"></div>
+<div class="star w-1.5 h-1.5 top-[22%] left-[8%]" style="--twinkle-dur: 4.1s;"></div>
+<div class="star w-1 h-1 top-[33%] right-[10%]" style="--twinkle-dur: 2.2s;"></div>
+<div class="star w-1.5 h-1.5 top-[46%] left-[12%]" style="--twinkle-dur: 3.8s;"></div>
+<div class="star w-1 h-1 top-[54%] right-[14%]" style="--twinkle-dur: 2.9s;"></div>
+<div class="star w-1 h-1 top-[66%] left-[22%]" style="--twinkle-dur: 4.5s;"></div>
+<!-- Upward-drifting golden stardust particles -->
+<div class="stardust top-[28%] left-[25%]" style="--float-dur: 5.5s;"></div>
+<div class="stardust top-[42%] right-[28%]" style="--float-dur: 6.8s; animation-delay: 1.2s;"></div>
+<div class="stardust top-[60%] left-[32%]" style="--float-dur: 7.2s; animation-delay: 2.4s;"></div>
+<div class="stardust top-[18%] right-[35%]" style="--float-dur: 6.1s; animation-delay: 0.7s;"></div>
+</div>
+<!-- ======================================================== -->
+<!-- Layer 1: decorative radial mandala background           -->
+<!-- Centered horizontally at 50%, positioned gracefully at   -->
+<!-- top: 57%, fully uncropped, 360-degree radial geometry    -->
+<!-- ======================================================== -->
+<div class="absolute top-[57%] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[1] flex items-center justify-center">
+<svg class="w-[530px] h-[530px] spin-mandala-centered opacity-40 select-none overflow-visible" fill="none" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<!-- Gold gradient -->
+<linearGradient id="decorativeGold" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#fff8e7" stop-opacity="0.9"></stop>
+<stop offset="25%" stop-color="#dfbe6b" stop-opacity="0.75"></stop>
+<stop offset="65%" stop-color="#b68933" stop-opacity="0.65"></stop>
+<stop offset="100%" stop-color="#ffd56b" stop-opacity="0.85"></stop>
+</linearGradient>
+<!-- 16-Fold Sacred Lotus Petal Unit (Center at 500, 500) -->
+<path d="M 500 230 C 528 290 546 360 500 420 C 454 360 472 290 500 230 Z" id="mandala-lotus-petal"></path>
+<!-- Inner Lotus Petal Unit -->
+<path d="M 500 340 C 518 380 528 420 500 455 C 472 420 482 380 500 340 Z" id="mandala-inner-petal"></path>
+<!-- Diamond chevron star ray -->
+<polygon id="mandala-sharp-diamond" points="500,105 518,175 500,245 482,175"></polygon>
+<!-- Intermediate 16-Fold Star Spoke & Sacred Node -->
+<line id="mandala-outer-ray" x1="500" x2="500" y1="52" y2="92"></line>
+<circle cx="500" cy="52" id="mandala-outer-node" r="3"></circle>
+<!-- Outer Ring Fine Celestial Tick -->
+<line id="mandala-tick" x1="500" x2="500" y1="28" y2="40"></line>
+</defs>
+<!-- Group centered strictly at 500, 500 for mathematical rotational symmetry -->
+<g stroke="url(#decorativeGold)">
+<!-- 1. Central Core Bindu & Sacred Concentric Rings -->
+<circle cx="500" cy="500" fill="url(#decorativeGold)" fill-opacity="0.25" r="16" stroke-width="1.2"></circle>
+<circle cx="500" cy="500" r="32" stroke-dasharray="2 3" stroke-width="0.9"></circle>
+<circle cx="500" cy="500" r="52" stroke-width="1.2"></circle>
+<circle cx="500" cy="500" r="78" stroke-dasharray="4 4" stroke-width="0.9"></circle>
+<circle cx="500" cy="500" r="115" stroke-width="1.3"></circle>
+<!-- 2. Inner 16-Fold Lotus Rosette -->
+<g fill="url(#decorativeGold)" fill-opacity="0.04" stroke-width="1">
+<use href="#mandala-inner-petal"></use>
+<use href="#mandala-inner-petal" transform="rotate(22.5 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(45 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(67.5 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(90 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(112.5 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(135 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(157.5 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(180 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(202.5 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(225 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(247.5 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(270 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(292.5 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(315 500 500)"></use>
+<use href="#mandala-inner-petal" transform="rotate(337.5 500 500)"></use>
+</g>
+<!-- 3. Concentric Ring Separator -->
+<circle cx="500" cy="500" r="185" stroke-width="1.1"></circle>
+<circle cx="500" cy="500" r="225" stroke-dasharray="3 5" stroke-width="0.9"></circle>
+<!-- 4. Sacred Sri Yantra Interlaced Triangles & Octagram Star -->
+<g opacity="0.8" stroke-width="1.1">
+<polygon points="500,260 708,620 292,620"></polygon>
+<polygon points="500,740 708,380 292,380"></polygon>
+<polygon points="740,500 380,708 380,292"></polygon>
+<polygon points="260,500 620,708 620,292"></polygon>
+<!-- Rotated square matrices -->
+<rect height="250" stroke-width="0.85" width="250" x="375" y="375"></rect>
+<rect height="250" stroke-width="0.85" transform="rotate(45 500 500)" width="250" x="375" y="375"></rect>
+</g>
+<!-- 5. Intermediate 16-Fold Sacred Curved Lotus Petals -->
+<g fill="url(#decorativeGold)" fill-opacity="0.03" stroke-width="1.1">
+<use href="#mandala-lotus-petal"></use>
+<use href="#mandala-lotus-petal" transform="rotate(22.5 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(45 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(67.5 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(90 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(112.5 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(135 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(157.5 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(180 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(202.5 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(225 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(247.5 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(270 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(292.5 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(315 500 500)"></use>
+<use href="#mandala-lotus-petal" transform="rotate(337.5 500 500)"></use>
+</g>
+<!-- 6. Concentric Mid Rings -->
+<circle cx="500" cy="500" r="325" stroke-width="1.2"></circle>
+<circle cx="500" cy="500" r="350" stroke-dasharray="6 4" stroke-width="0.8"></circle>
+<!-- 7. Outer 16-Point Sharp Diamond Star Ray Geometries -->
+<g fill="url(#decorativeGold)" fill-opacity="0.05" stroke-width="1">
+<use href="#mandala-sharp-diamond"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(22.5 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(45 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(67.5 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(90 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(112.5 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(135 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(157.5 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(180 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(202.5 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(225 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(247.5 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(270 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(292.5 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(315 500 500)"></use>
+<use href="#mandala-sharp-diamond" transform="rotate(337.5 500 500)"></use>
+</g>
+<!-- 8. Outer Rays & Sacred Golden Nodules -->
+<g fill="url(#decorativeGold)" stroke-width="1.1">
+<use href="#mandala-outer-ray"></use><use href="#mandala-outer-node"></use>
+<use href="#mandala-outer-ray" transform="rotate(22.5 500 500)"></use><use href="#mandala-outer-node" transform="rotate(22.5 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(45 500 500)"></use><use href="#mandala-outer-node" transform="rotate(45 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(67.5 500 500)"></use><use href="#mandala-outer-node" transform="rotate(67.5 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(90 500 500)"></use><use href="#mandala-outer-node" transform="rotate(90 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(112.5 500 500)"></use><use href="#mandala-outer-node" transform="rotate(112.5 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(135 500 500)"></use><use href="#mandala-outer-node" transform="rotate(135 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(157.5 500 500)"></use><use href="#mandala-outer-node" transform="rotate(157.5 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(180 500 500)"></use><use href="#mandala-outer-node" transform="rotate(180 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(202.5 500 500)"></use><use href="#mandala-outer-node" transform="rotate(202.5 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(225 500 500)"></use><use href="#mandala-outer-node" transform="rotate(225 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(247.5 500 500)"></use><use href="#mandala-outer-node" transform="rotate(247.5 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(270 500 500)"></use><use href="#mandala-outer-node" transform="rotate(270 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(292.5 500 500)"></use><use href="#mandala-outer-node" transform="rotate(292.5 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(315 500 500)"></use><use href="#mandala-outer-node" transform="rotate(315 500 500)"></use>
+<use href="#mandala-outer-ray" transform="rotate(337.5 500 500)"></use><use href="#mandala-outer-node" transform="rotate(337.5 500 500)"></use>
+</g>
+<!-- 9. Outer Ring Celestial Framework with 32 Astronomical Ticks -->
+<circle cx="500" cy="500" r="460" stroke-width="1.3"></circle>
+<circle cx="500" cy="500" r="472" stroke-dasharray="3 4" stroke-width="0.75"></circle>
+<g stroke-width="0.8">
+<use href="#mandala-tick"></use><use href="#mandala-tick" transform="rotate(11.25 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(22.5 500 500)"></use><use href="#mandala-tick" transform="rotate(33.75 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(45 500 500)"></use><use href="#mandala-tick" transform="rotate(56.25 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(67.5 500 500)"></use><use href="#mandala-tick" transform="rotate(78.75 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(90 500 500)"></use><use href="#mandala-tick" transform="rotate(101.25 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(112.5 500 500)"></use><use href="#mandala-tick" transform="rotate(123.75 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(135 500 500)"></use><use href="#mandala-tick" transform="rotate(146.25 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(157.5 500 500)"></use><use href="#mandala-tick" transform="rotate(168.75 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(180 500 500)"></use><use href="#mandala-tick" transform="rotate(191.25 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(202.5 500 500)"></use><use href="#mandala-tick" transform="rotate(213.75 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(225 500 500)"></use><use href="#mandala-tick" transform="rotate(236.25 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(247.5 500 500)"></use><use href="#mandala-tick" transform="rotate(258.75 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(270 500 500)"></use><use href="#mandala-tick" transform="rotate(281.25 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(292.5 500 500)"></use><use href="#mandala-tick" transform="rotate(303.75 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(315 500 500)"></use><use href="#mandala-tick" transform="rotate(326.25 500 500)"></use>
+<use href="#mandala-tick" transform="rotate(337.5 500 500)"></use><use href="#mandala-tick" transform="rotate(348.75 500 500)"></use>
+</g>
+</g>
+</svg>
+</div>
+<!-- Soft focal scrim overlay in text field to ensure supreme typographic legibility without losing mandala geometry -->
+<div class="absolute inset-0 pointer-events-none z-[2]" style="background: radial-gradient(ellipse at 50% 58%, rgba(8, 12, 28, 0.82) 0%, rgba(8, 12, 28, 0.5) 45%, rgba(8, 12, 28, 0) 75%);"></div>
+<!-- ======================================================== -->
+<!-- SAFE REGION (Y = 0 to Y ≈ 662px in scaled 853px height)  -->
+<!-- All essential content securely kept within safe bounds   -->
+<!-- ======================================================== -->
+<div class="outro-content-stack relative z-10 w-full flex flex-col items-center px-5 space-y-3.5">
+<!-- 1. TOP BRAND MARK: FLOATING DIRECTLY OVER CELESTIAL SKY (NO WHITE CONTAINER / CARD) -->
+
+<!-- 2. LECTURER PORTRAIT (Chest Up Gesture with Golden Rim Halo) -->
+<header class="relative z-20 flex items-center justify-center gap-3 pt-1 pb-0.5">
+  <!-- Rotating Flower Emblem (Variant 02, Antique Amber Ochre) -->
+  <div class="w-[58px] h-[58px] rounded-full border border-amber-400/50 flex items-center justify-center text-amber-200 text-xs font-cinzel brand-wordmark-gold" style="animation: flower-spin 24s linear infinite;">✦</div>
+  <div class="h-[48px] px-3 flex items-center text-amber-200 font-cinzel font-semibold tracking-wide text-sm brand-wordmark-gold">Your Channel</div>
+</header><section class="relative w-full flex flex-col items-center pt-0.5">
+<div class="relative float-lecturer flex flex-col items-center">
+<!-- Backing gold halo radial glow -->
+<div class="absolute -inset-4 bg-gradient-to-t from-amber-500/20 via-yellow-400/10 to-transparent rounded-3xl blur-xl pointer-events-none"></div>
+<!-- Cutout Lecturer Portrait Container -->
+<div class="relative w-[270px] h-[142px] rounded-2xl overflow-hidden border border-amber-400/30 shadow-[0_12px_28px_rgba(0,0,0,0.75)] bg-[#121630]/60">
+<div class="w-full h-full flex items-center justify-center bg-gradient-to-b from-[#1a2048] to-[#0c0f24] text-amber-200/70 text-sm font-cinzel">Presenter</div>
+<!-- Subtle cinematic bottom vignette -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#0c0f24]/90 via-transparent to-transparent"></div>
+</div>
+<!-- Credential pill floating over portrait bottom -->
+<div class="-mt-3.5 z-10 px-3.5 py-1 rounded-full bg-[#0a0d20]/90 border border-amber-400/40 backdrop-blur-md shadow-lg flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]"></span>
+<span id="outro-scholar-badge" class="text-[10px] font-medium tracking-wide text-amber-200/90 font-cinzel">Example Channel • Presenter</span>
+</div>
+</div>
+</section>
+<!-- 3. Headline & supporting copy -->
+<section class="w-full text-center space-y-1.5 pt-0.5">
+<h1 id="outro-headline" class="outro-title font-cinzel font-bold gold-gradient-text drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+  Discover more from<br>your lectures
+</h1>
+<p id="outro-tagline" class="text-[12.5px] text-[#F5EFEB] max-w-[340px] mx-auto leading-relaxed font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+  Turn long-form talks into Shorts with captions, outros, and upload-ready metadata.
+</p>
+</section>
+<!-- 4. UNIFIED SINGLE GLASSMORPHIC SOCIAL / BRAND STRIP -->
+<section class="w-full max-w-[350px] pt-1">
+<div class="rounded-full px-4 py-2 bg-gradient-to-r from-indigo-950/75 via-[#141838]/85 to-indigo-950/75 border border-amber-400/35 backdrop-blur-md shadow-[0_8px_24px_rgba(0,0,0,0.5)] flex items-center justify-center gap-3">
+<!-- Brand domain -->
+<div class="flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-amber-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+</svg>
+<span id="outro-brand-website" class="text-[11.5px] font-medium tracking-wide text-amber-100">example.com</span>
+</div>
+<!-- Divider -->
+<div class="h-3 w-[1px] bg-amber-400/30"></div>
+<!-- Unified Handle and Platform Icons Row -->
+<div class="flex items-center gap-2">
+<span id="outro-brand-handle" class="text-[11.5px] font-medium tracking-tight text-amber-100/90">@ExampleChannel</span>
+<!-- Matching 17px Gold/Cream Metallic Icons Aligned Baseline -->
+<div class="flex items-center gap-2 pl-0.5">
+<!-- YouTube -->
+<svg class="w-[17px] h-[17px] text-amber-200/95 hover:text-amber-100 transition-colors drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]" fill="currentColor" title="YouTube" viewBox="0 0 24 24">
+<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+</svg>
+<!-- Instagram -->
+<svg class="w-[17px] h-[17px] text-amber-200/95 hover:text-amber-100 transition-colors drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]" fill="currentColor" title="Instagram" viewBox="0 0 24 24">
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. UNDERSTATED BROADCAST-STANDARD EDITORIAL CTAs (Brightened warm ivory subtitles) -->
+<section class="w-full max-w-[340px] flex flex-col items-center text-center space-y-2.5 pt-1">
+<!-- Callout 1: Broadcast Subscribe Notice with subtle red pulse dot -->
+<div class="flex flex-col items-center space-y-0.5">
+<div class="flex items-center justify-center gap-2">
+<span class="w-2 h-2 rounded-full bg-red-500 rec-pulse"></span>
+<span id="outro-lecture-cta" class="font-cinzel text-[10.5px] sm:text-xs font-bold tracking-[0.08em] uppercase text-amber-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] leading-snug text-center max-w-[320px]">
+  Full lecture &amp; subscribe at example.com
+</span>
+</div>
+<p class="outro-cta-subline text-[11.5px] text-[#EAE4D8] tracking-wide font-normal drop-shadow-[0_1px_5px_rgba(0,0,0,0.85)] hidden">
+  Follow your channel for more lectures
+</p>
+</div>
+<!-- Subtle ornamental divider line -->
+<div class="w-28 h-[1px] bg-gradient-to-r from-transparent via-amber-400/35 to-transparent"></div>
+<!-- Callout 2: Broadcast Link in Description Prompt -->
+<div class="flex flex-col items-center space-y-0.5">
+<span id="outro-secondary-cta" class="font-cinzel text-[11px] font-semibold tracking-[0.1em] uppercase text-amber-300/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
+  Link in description
+</span>
+<p class="outro-cta-subline text-[11px] text-[#EAE4D8] tracking-wide font-normal flex items-center justify-center gap-1 drop-shadow-[0_1px_5px_rgba(0,0,0,0.85)] hidden">
+<span class="">Link in description &amp; pinned comment</span>
+<span class="text-xs text-amber-200">🔗</span>
+</p>
+</div>
+</section>
+</div>
+<!-- ======================================================== -->
+<!-- 6. CLEAN BOTTOM SAFE ZONE (YouTube Shorts Native ~430px) -->
+<!-- Debug/safe-zone text completely removed; clean negative  -->
+<!-- celestial space with subtle discrete copyright mark      -->
+<!-- ======================================================== -->
+<footer class="relative z-10 w-full h-[192px] pointer-events-none flex flex-col justify-end items-center pb-4">
+<p class="text-[9.5px] tracking-wider text-amber-200/40 font-light">
+    <span id="outro-footer-copyright">© Example Channel · example.com</span>
+  </p>
+<div class="w-full h-12 bg-gradient-to-t from-black/75 to-transparent"></div>
+</footer>
+</main>
+
+
+
+
+</body></html>

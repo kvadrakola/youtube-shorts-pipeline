@@ -1,0 +1,21 @@
+{
+  "video_id": "dQw4w9WgXcQ",
+  "layout_preset": "blur_bg",
+  "stories": [
+    {
+      "id": "short_01",
+      "title": "Sample hook for a lecture clip",
+      "hook": "Here is one self-contained idea from a longer talk.",
+      "start": 12.5,
+      "end": 42.0,
+      "language": "en",
+      "youtube_seo": {
+        "yt_title": "One idea from a long lecture",
+        "yt_description_summary": "A short standalone clip generated from a longer video. Configure BRAND_* in .env for your channel.",
+        "yt_tags": ["shorts", "lecture", "education"],
+        "yt_hashtags": ["#Shorts", "#Lecture"],
+        "yt_pinned_comment": "What stood out to you? Visit example.com for more."
+      }
+    }
+  ]
+}

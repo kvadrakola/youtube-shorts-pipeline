@@ -1,0 +1,30 @@
+# Install the CUDA 12.8 wheels first so pip does not replace them with a CPU build:
+#   pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+# Then: pip install -r requirements.txt
+
+whisperx==3.7.4
+pyannote.audio==3.4.0
+faster-whisper==1.2.1
+ctranslate2==4.6.0
+yt-dlp==2026.8.19
+# Outro renderer. After install run once: python -m playwright install chromium
+playwright>=1.47,<2
+
+# numpy is left to the solver. whisperx 3.7.4 needs >=2.0.2,<2.1.
+# DeepFilterNet: see requirements-deepfilter.txt and scripts/install_deepfilter.ps1
+numpy>=2.0.2,<2.1
+pandas==2.2.3
+av==15.1.0
+transformers==4.48.3
+huggingface_hub==0.36.0
+nltk==3.9.1
+omegaconf==2.3.0
+soundfile==0.13.1
+
+pydantic==2.11.7
+pydantic-settings==2.15.0
+python-dotenv==1.1.1
+loguru==0.7.3
+PyYAML==6.0.3
+google-genai>=0.1.0
+openai>=1.40.0,<2

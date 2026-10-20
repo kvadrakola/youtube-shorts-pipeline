@@ -1,0 +1,6 @@
+# Minimal dependencies for CPU unit tests (see .github/workflows/tests.yml).
+pydantic==2.11.7
+pydantic-settings==2.15.0
+openai>=1.40.0,<2
+numpy>=2.0.2,<2.1
+loguru==0.7.3

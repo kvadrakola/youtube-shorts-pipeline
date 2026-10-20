@@ -1,0 +1,5 @@
+# DeepFilterNet provides `import df`. Install AFTER requirements.txt (numpy 2.x conflict).
+#   pip install -r requirements-deepfilter.txt --no-deps
+#   pip install "appdirs>=1.4,<2.0" "requests>=2.27,<3"
+deepfilterlib==0.5.6
+deepfilternet==0.5.6

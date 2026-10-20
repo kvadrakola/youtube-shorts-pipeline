@@ -1,0 +1,11 @@
+.env
+cookies.txt
+__pycache__/
+*.py[cod]
+.venv/
+data/
+logs/
+models/
+enhance.log
+*.wav
+*.mp4
